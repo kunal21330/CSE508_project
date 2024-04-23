@@ -1,0 +1,139 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('cool-background.png'); /* Replace 'your-image.jpg' with the path to your background image */
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.typing-style {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    height: 300px; /* Set a fixed height for the text container */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden; /* This is important for the animation */
+    overflow-y: auto; /* Add vertical scroll bar */
+}
+
+.typing-style p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    white-space: pre-wrap; /* Allow wrapping */
+    overflow: hidden; /* To hide overflowing text */
+    position: relative; /* Ensure typing occurs only within the box */
+    display: inline-block; /* To make sure the width doesn't expand beyond the content */
+}
+
+.typing-style::-webkit-scrollbar {
+    display: none;
+}
+
+.typing-style p span {
+    animation: typing 5s steps(40) forwards, fadeIn 5s forwards; /* Typing animation and fade in */
+    opacity: 0; /* Initially invisible */
+}
+
+@keyframes typing {
+    0% {
+        width: 0; /* Initially no width */
+    }
+    100% {
+        width: 100%; /* Full width at the end */
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        opacity: 1; /* End visible */
+    }
+}
+
+.get-started-btn {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px; /* Increased padding for larger button size */
+    background-color: #007bff; /* Blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    font-size: 1.2rem; /* Increased font size */
+}
+
+.get-started-btn:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+@media (max-width: 768px) {
+    .typing-style p {
+        font-size: 1rem; /* Adjusted font size for smaller screens */
+    }
+}
+
+.text-box-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px; /* Adjust the margin-top value to create space */
+}
+
+
+.text-box {
+    width: 45%;
+    padding: 10px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.submit-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}

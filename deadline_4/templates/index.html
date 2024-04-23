@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legalease</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.7s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image">
+        <header>
+            <h1>LegalEase</h1>
+        </header>
+        <section class="typing-style">
+            <p>LegalEase is an innovative software solution designed to simplify the complexity of legal documents. With its advanced algorithms, it effortlessly processes legal documents in PDF or text format and delivers concise and easy-to-understand summaries. Our platform ensures accessibility to legal information for all, empowering individuals and businesses to navigate the legal landscape with confidence and clarity.</p>
+        </section>
+        <button class="get-started-btn" id="get-started-btn">Get Started</button>
+
+    </div>
+
+    <script>
+        document.getElementById("get-started-btn").addEventListener("click", function() {
+            // Add fade-out animation to the content
+            document.querySelector(".typing-style").classList.add("fade-out");
+
+            // Wait for the animation to complete before redirecting
+            setTimeout(function() {
+                // Redirect to page 2
+                window.location.href = "page2";
+            }, 500); // Adjust the delay (in milliseconds) to match the animation duration
+        });
+    </script>
+</body>
+</html>

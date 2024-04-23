@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2 - Legalease</title>
+    <link rel="stylesheet" href="static/styles2.css">
+</head>
+<body>
+    <div class="background-image">
+        <header>
+            <div class="heading-container">
+                <h1>LegalEease</h1>
+            </div>
+        </header>
+    </div>
+
+
+    <form action="/process_summary" method="POST">
+        <div class="content">
+            <div class="text-box-container">
+                <textarea class="text-box" id="input-box" name = "input_tex" placeholder="Enter your text here..."></textarea>
+                <!-- <button class="btn btn-upload" id="upload-btn">Upload Document</button> -->
+                <input class="btn btn-submit" id="submit-btn" type="submit" value="Submit">
+                <textarea class="text-box" id="output-box" placeholder="Summary will appear here..." readonly></textarea>
+            </div>
+        </div>
+    </form>
+
+
+    <form id="uploadForm" class="custom-form" method='POST' enctype='multipart/form-data'>
+        {{form_.hidden_tag()}}
+        {{form_.file(id="fileInput", class="btn file-input")}}
+        {{form_.submit(id="submit-btn", class="btn btn-upload")}}
+    </form>
+
+    <form id="text_to_audio" action="/text2audio" method="POST">
+        <input type="hidden" name="text_data" id="text_data">
+        <input class="btn text_audio" type="submit" value="Audio">
+    </form>
+
+    <form id="translate" action="/translate" method="POST">
+        <input type="hidden" name="text-data" id="translate_text">
+        <input class="btn translate" type="submit" value="Translate">
+    </form>
+
+    <a href="/run_streamlit" target="_blank" id="chatbot-icon">
+        <img src="/static/icon.png" alt="Chat with us!" />
+    </a>
+    
+
+    <script>
+        // Get the input text from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const inputText = urlParams.get('input_text');
+
+        // Set the input text to the textarea
+        document.getElementById('output-box').value = inputText;
+
+
+
+        document.getElementById("chatbot-icon").addEventListener("click", function(event) {
+            event.preventDefault();
+            var url = this.getAttribute("href");
+            window.open(url, '_blank');
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('text_data').value = inputText; // This assumes you're using Flask's render_template to pass the summary
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('translate_text').value = inputText; // This assumes you're using Flask's render_template to pass the summary
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var inputText = "{{ input_text }}"; // Assuming this variable is being passed correctly from Flask
+            if (inputText) {
+                document.getElementById('translate_text').value = inputText;
+            }
+        });
+
+        function openInNewTab() {
+            var form = document.getElementById('yourFormId');
+            form.target = '_blank'; // Set form target to open in a new tab
+        }
+
+
+    </script>
+    
+
+
+    
+</body>
+</html>
